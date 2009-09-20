@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name="viewport" content="width=320">
+  <title>Chores</title>
+  <link rel="stylesheet" type="text/css" href="/styles/chores.css">
+  <script type="text/javascript" src="/scripts/jquery.js"></script>
+  <script type="text/javascript" src="/scripts/chores.js"></script>
+</head>
+<body>
+  <form action="/chores/new" method="post">
+    <div>
+      <label for="label">Label</label>
+      <input type="text" name="label" id="label" value="[% form.fields.label.value %]">
+      [% IF form.fields.label.error %]<label class="error" for="label">[% form.fields.label.error %]</label>[% END %]
+    </div>
+    <div>
+      <label for="frequency">Frequency</label>
+      <input type="text" name="frequency" id="frequency" value="[% form.fields.frequency.value %]">
+      [% IF form.fields.frequency.error %]<label class="error" for="frequency">[% form.fields.frequency.error %]</label>[% END %]
+    </div>
+    <div>
+      <input type="submit" value="Create new task">
+    </div>
+  </form>
+</body>
+</html>

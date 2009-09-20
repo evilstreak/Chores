@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name="viewport" content="width=320">
+  <title>Chores</title>
+  <link rel="stylesheet" type="text/css" href="/styles/chores.css">
+  <script type="text/javascript" src="/scripts/jquery.js"></script>
+  <script type="text/javascript" src="/scripts/chores.js"></script>
+</head>
+<body>
+  <div id="controls">
+    <h1>Chores</h1>
+    <ul>
+      <li class="new"><a href="/chores/new">New task</a></li>
+    </ul>
+  </div>
+  <div id="lists">
+    [% FOREACH c IN chores; IF c.tasks.length > 0 %]
+      <dl class="[% c.class %]">
+        <dt>[% c.label %] ([% c.tasks.length %])</dt>
+        [% FOREACH t = c.tasks;
+             class = "";
+             IF t.frequency == juice.days_away( t.due ); class = ' class="done"'; END;
+             IF juice.days_away( t.due ) < 0; class = ' class="overdue"'; END; %]
+          <dd title="[% t.due %]"[% class %]>
+            <a href="/chores/[% t.id %]/done">
+              [% t.label %]
+              <small>Due [% juice.due_in( t.due ) %] — every [% juice.human_time( t.frequency ) %]</small>
+            </a>
+          </dd>
+        [% END %]
+      </dl>
+    [% END; END %]
+  </div>
+</body>
+</html>

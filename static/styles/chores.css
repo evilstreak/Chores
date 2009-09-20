@@ -1,0 +1,125 @@
+* { margin: 0; padding: 0; }
+
+body {
+  background: #ccc;
+  font: 300 100%/1.5 "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+#controls {
+  background: #222;
+  bottom: 0;
+  color: #fff;
+  left: 0;
+  position: fixed;
+  text-shadow: 1px 1px #666;
+  top: 0;
+  width: 48px;
+}
+
+#controls h1 {
+  border-right: 1px solid #fff;
+  font-size: 2em;
+  line-height: 36px;
+  margin: 0 -6px;
+  padding: 0 6px;
+  position: absolute;
+  right: 48px;
+  -moz-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform-origin: 100% 0;
+  -webkit-transform-origin: 100% 0;
+  top: 48px;
+  white-space: nowrap;
+}
+
+#controls a {
+  background: #fff url(new.png) no-repeat center center;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  display: block;
+  height: 36px;
+  left: 6px;
+  position: absolute;
+  text-indent: -999px;
+  top: 6px;
+  width: 36px;
+}
+
+#controls a:hover {
+  background-color: #18d;
+  background-image: url(new-hover.png);
+}
+
+#lists {
+  padding-left: 50px;
+}
+
+dl {
+  color: #000;
+  float: left;
+  width: 25%;
+}
+
+dt, dd {
+  background: #fff;
+  border-bottom: 1px solid #666;
+  margin-left: 10px;
+}
+
+dt {
+  background: #18d;
+  color: #fff;
+  font-weight: bold;
+  line-height: 3;
+  padding: 0 10px;
+  text-shadow: 2px 2px #06a;
+}
+
+dd a {
+  color: #000;
+  display: block;
+  padding: 0.25em 10px 0.5em;
+  text-decoration: none;
+}
+
+dd.overdue a {
+  background: url(overdue.png) no-repeat right center;
+  color: #d11;
+  font-weight: bold;
+}
+
+dd a:hover {
+  background: #1d1 url(tick.png) no-repeat right center;
+  color: #fff;
+}
+
+dd small {
+  color: #333;
+  display: block;
+  font-size: 75%;
+  line-height: 1;
+}
+
+dd.loading a {
+  background: #ff3 url(ajax-loader.gif) no-repeat right center;
+  color: #000;
+}
+
+dd.done {
+  background: #cef;
+}
+
+@media only screen and (max-device-width: 480px) {
+  body {
+    width: 320px;
+  }
+
+  dl {
+    float: none;
+    width: auto;
+  }
+
+  dt, dd {
+    margin: 0;
+  }
+}
