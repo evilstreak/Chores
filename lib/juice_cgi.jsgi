@@ -124,7 +124,7 @@ app.helpers.floor = function( x ) { return Math.floor( x ); };
 app.helpers.due_in = function( due ) {
   var days = app.helpers.days_away( due );
   if ( days < 0 )
-    return days == -1 ? "yesterday" : ( days * -1 ) + " ago";
+    return days == -1 ? "yesterday" : ( days * -1 ) + " days ago";
   else if ( days == 0 )
     return "today";
   else {
