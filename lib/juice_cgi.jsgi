@@ -3,9 +3,13 @@ const SQLite3 = require( 'sqlite3' ).SQLite3;
 var juice = require('juice');
 var app = new juice.Application;
 
+app.db_file = function(env) {
+  return env.docRoot + '/db/chores.sqlite3';
+}
+
 app.controllers.chores = {
   index : function ( env ) {
-    var db = new SQLite3( '/Users/dom/Documents/scratchpad/chores/db/chores.sqlite3' );
+    var db = new SQLite3( app.db_file(env) );
     var c = db.cursor( 'SELECT id, label, frequency, due FROM task ORDER BY due, id' );
 
     var today = new Date();
@@ -61,7 +65,7 @@ app.controllers.chores = {
   },
 
   done : function ( env, task_id ) {
-    var db = new SQLite3( '/Users/dom/Documents/scratchpad/chores/db/chores.sqlite3' );
+    var db = new SQLite3( app.db_file(env) );
     var c = db.cursor( "UPDATE task SET due = STRFTIME('%Y/%m/%d', 'now', 'localtime', frequency || ' days') WHERE id = ?" );
     c.bind( [ task_id ] );
     c.next();
@@ -103,7 +107,7 @@ app.controllers.chores = {
     if ( ! spec.valid )
       return { form : spec };
 
-    var db = new SQLite3( '/Users/dom/Documents/scratchpad/chores/db/chores.sqlite3' );
+    var db = new SQLite3( app.db_file(env) );
     var c = db.cursor( "INSERT INTO task ( label, frequency, due ) VALUES ( ?1, ?2, STRFTIME('%Y/%m/%d', 'now', 'localtime', ?2 || ' days') )" );
     c.bind( [ spec.fields.label.value, spec.fields.frequency.value ] );
     c.next();
