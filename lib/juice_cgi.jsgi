@@ -95,7 +95,7 @@ app.controllers.chores = {
       }
     } };
 
-    if ( env.REQUEST_METHOD != "POST" )
+    if ( env.requestMethod != "POST" )
       return { form : spec };
 
     spec = this.validate( spec.fields, env.juice.params.post );
