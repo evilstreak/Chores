@@ -4,7 +4,7 @@ var juice = require('juice');
 var app = new juice.Application;
 
 app.db_file = function(env) {
-  return env.docRoot + '/db/chores.sqlite3';
+  return env.juice.docRoot + '/db/chores.sqlite3';
 }
 
 app.controllers.chores = {
