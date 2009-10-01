@@ -3,6 +3,9 @@ const SQLite3 = require( 'sqlite3' ).SQLite3;
 var juice = require('juice');
 var app = new juice.Application;
 
+var DOC_ROOT = module.uri.replace(/^.*?:\/\/(.*?)lib\/juice_cgi\.jsgi$/, "$1") || "./";
+print(DOC_ROOT);
+
 app.db_file = function(env) {
   return env.juice.docRoot + '/db/chores.sqlite3';
 }
@@ -145,10 +148,29 @@ app.helpers.human_time = function( frequency ) {
     return frequency == 1 ? "day" : frequency + " days";
 }
 
+app.controllers.test_x = function() {
+  return {
+    status: 200,
+    headers: {
+      'x-sendfile': require.main.id
+    },
+    body: ['']
+  }
+}
+
 app.actions = {
-  "/" : { action : "chores.index", render : "chores/index.tt" },
+  "/?" : { action : "chores.index", render : "chores/index.tt" },
   "/(\\d+)/done" : { action : app.controllers.chores.done, redirect : "/" },
-  "/new" : { action : "chores.new", render : "chores/new.tt" }
+  "/new" : { action : "chores.new", render : "chores/new.tt" },
+  "/foo" : {action: "test_x", raw: true },
 };
 
-juice.run(app);
+//juice.run(app);
+
+var server = require('zest').Zest({
+  handler: app.setup(DOC_ROOT),
+});
+
+print("starting", server);
+server.start();
+print("done");
