@@ -152,7 +152,7 @@ app.controllers.test_x = function() {
   return {
     status: 200,
     headers: {
-      'x-sendfile': require.main.id
+      'x-sendfile': DOC_ROOT + "static" + this.env.pathInfo
     },
     body: ['']
   }
@@ -162,7 +162,7 @@ app.actions = {
   "/?" : { action : "chores.index", render : "chores/index.tt" },
   "/(\\d+)/done" : { action : app.controllers.chores.done, redirect : "/" },
   "/new" : { action : "chores.new", render : "chores/new.tt" },
-  "/foo" : {action: "test_x", raw: true },
+  "/(?:styles|scripts)/.*?": {action: "test_x", raw: true },
 };
 
 //juice.run(app);
