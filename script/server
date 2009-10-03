@@ -1,2 +1,9 @@
-#!/bin/sh
-lighttpd -D -f demo/lighttpd.conf
+#!/usr/bin/env flusspferd -I lib -I /Users/dom/juice/lib
+
+var server = require( 'zest' ).Zest( {
+  handler: require( 'chores' ).app
+} );
+
+print( "starting", server );
+server.start();
+print( "done" );
