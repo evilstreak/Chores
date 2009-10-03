@@ -13,7 +13,7 @@
   <div id="controls">
     <h1>Chores</h1>
     <ul>
-      <li class="new"><a href="/chores/new">New task</a></li>
+      <li class="new"><a href="/new">New task</a></li>
     </ul>
   </div>
   <div id="lists">
@@ -25,7 +25,7 @@
              IF t.frequency == juice.days_away( t.due ); class = ' class="done"'; END;
              IF juice.days_away( t.due ) < 0; class = ' class="overdue"'; END; %]
           <dd title="[% t.due %]"[% class %]>
-            <a href="/chores/[% t.id %]/done">
+            <a href="/[% t.id %]/done">
               [% t.label %]
               <small>Due [% juice.due_in( t.due ) %] — every [% juice.human_time( t.frequency ) %]</small>
             </a>
