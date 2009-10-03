@@ -80,7 +80,7 @@ $( function() {
     };
 
     $( self ).addClass( 'loading' );
-    $.getJSON( this.href + '.json', updateChore );
+    $.getJSON( this.href, updateChore );
   };
 
   $( '#lists a' ).click( markAsDone );
