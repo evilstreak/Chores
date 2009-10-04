@@ -21,10 +21,11 @@
       <dl class="[% c.class %]">
         <dt>[% c.label %] ([% c.tasks.length %])</dt>
         [% FOREACH t = c.tasks;
-             class = "";
-             IF t.frequency == juice.days_away( t.due ); class = ' class="done"'; END;
-             IF juice.days_away( t.due ) < 0; class = ' class="overdue"'; END; %]
-          <dd title="[% t.due %]"[% class %]>
+             class = [];
+             IF t.frequency == juice.days_away( t.due ); class.push( 'done' ); END;
+             IF juice.days_away( t.due ) < 0; class.push( 'overdue' ); END;
+             IF t.frequency < 7; class.push( 'common' ); END %]
+          <dd title="[% t.due %]"[% IF class.length; GET ' class="' _ class.join( ' ' ) _ '"'; END %]>
             <a href="/[% t.id %]/done">
               [% t.label %]
               <small>Due [% juice.due_in( t.due ) %] — every [% juice.human_time( t.frequency ) %]</small>

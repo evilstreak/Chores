@@ -89,8 +89,8 @@ dd.overdue a {
 }
 
 dd a:hover {
-  background: #1d1 url(tick.png) no-repeat right center;
-  color: #fff;
+  background: #1d1 url(tick.png) no-repeat right center ! important;
+  color: #fff ! important;
 }
 
 dd small {
@@ -107,6 +107,14 @@ dd.loading a {
 
 dd.done {
   background: #cef;
+}
+
+dd.common {
+  background: #e7e7e7;
+}
+
+dd.common a {
+  color: #222
 }
 
 @media only screen and (max-device-width: 480px) {
