@@ -10,7 +10,7 @@
   <script type="text/javascript" src="/scripts/chores.js"></script>
 </head>
 <body>
-  <form action="/chores/new" method="post">
+  <form action="[% juice.urlFor('/new') %]" method="post">
     <div>
       <label for="label">Label</label>
       <input type="text" name="label" id="label" value="[% form.fields.label.value %]">

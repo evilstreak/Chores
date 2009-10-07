@@ -13,7 +13,7 @@
   <div id="controls">
     <h1>Chores</h1>
     <ul>
-      <li class="new"><a href="/new">New task</a></li>
+      <li class="new"><a href="[% juice.urlFor('/new') %]">New task</a></li>
     </ul>
   </div>
   <div id="lists">
@@ -26,7 +26,7 @@
              IF juice.days_away( t.due ) < 0; class.push( 'overdue' ); END;
              IF t.frequency < 7; class.push( 'common' ); END %]
           <dd title="[% t.due %]"[% IF class.length; GET ' class="' _ class.join( ' ' ) _ '"'; END %]>
-            <a href="/[% t.id %]/done">
+            <a href="[%  juice.urlFor(t.id, 'done') %]">
               [% t.label %]
               <small>Due [% juice.due_in( t.due ) %] — every [% juice.human_time( t.frequency ) %]</small>
             </a>
