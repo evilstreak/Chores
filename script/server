@@ -1,9 +1,7 @@
-#!/usr/bin/env flusspferd -I lib -I /Users/dom/juice/lib
+#!/usr/bin/env flusspferd
 
 var server = require( 'zest' ).Zest( {
-  handler: require( 'chores' ).app
+  handler: require( '../lib/chores' ).app
 } );
 
-print( "starting", server );
 server.start();
-print( "done" );
