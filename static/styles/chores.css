@@ -82,6 +82,14 @@ dd a {
   text-decoration: none;
 }
 
+dd.common {
+  background: #e7e7e7;
+}
+
+dd.common a {
+  color: #222
+}
+
 dd.overdue a {
   background: url(overdue.png) no-repeat right center;
   color: #d11;
@@ -107,14 +115,6 @@ dd.loading a {
 
 dd.done {
   background: #cef;
-}
-
-dd.common {
-  background: #e7e7e7;
-}
-
-dd.common a {
-  color: #222
 }
 
 @media only screen and (max-device-width: 480px) {
